@@ -1,3 +1,4 @@
 .idea
 .env/
 __pucache__/
+.venv
