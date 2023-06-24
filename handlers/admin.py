@@ -86,7 +86,7 @@ async def del_callback_run(callback_query: types.CallbackQuery):
     await callback_query.answer(text=f'{callback_query.data.replace("del ", "")} Удалена', show_alert=True)
 
 
-@dp.message_handler(commands='Удалить')
+#@dp.message_handler(commands='Удалить')
 async def delete_item(message: types.Message):
     if message.from_user.id == ID:
         read = await sqlite_dp.sql_read2()
@@ -105,3 +105,5 @@ def register_handler_admin(dp: Dispatcher):
     dp.register_message_handler(load_description, state=FSMAdmin.description)
     dp.register_message_handler(load_price, state=FSMAdmin.price)
     dp.register_message_handler(cancel_handler, state="*", commands='отмена')
+    dp.register_message_handler(delete_item, commands='Удалить')
+
